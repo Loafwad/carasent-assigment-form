@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "./components/Layout/Layout";
 import Button from "./components/Misc/Button";
-import InputField from "./components/Misc/InputField";
+import InputField from "./components/Misc/InputField/InputField";
 import RadioField from "./components/Misc/RadioField";
 import Select from "./components/Misc/SelectField";
 import { useForm } from "./hooks/useForm";
@@ -52,7 +52,7 @@ function App() {
             type="firstName"
             label="First Name"
             placeholder="Enter your name"
-            {...register("firstName", { value: true, message: "This field is required" })}
+            {...register("firstName", { value: true, message: "First name field is required" })}
           />
           <InputField
             type="lastName"

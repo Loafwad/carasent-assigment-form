@@ -12,8 +12,20 @@ export function useForm() {
       value: values[name],
       required: required.value,
       pattern: required.pattern,
-      error: values[name] ? "" : required.message,
+      error: handleError(name, required),
     };
+  };
+
+  const handleError = (name: string, required: { value: boolean; pattern?: RegExp; message: string }) => {
+    if (values[name] && required.pattern && !required.pattern?.test(values[name])) {
+      return required.message;
+    }
+
+    if (!values[name] && required.value) {
+      return required.message;
+    }
+
+    return "";
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
